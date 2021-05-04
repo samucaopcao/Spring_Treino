@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.example.demo.entities.User;
+
 public class UserDTO implements Serializable {
 
 	/**
@@ -39,6 +41,15 @@ public class UserDTO implements Serializable {
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+	}
+
+	public UserDTO(User entity) {
+		this.id = entity.getId();
+		this.firstName = entity.getFirstName();
+		this.lastName = entity.getLastName();
+		this.email = entity.getEmail();
+		//this.password = entity.getPassword();
+		entity.getRules().forEach(rule -> this.rules.add(new RuleDTO(rule)));
 	}
 
 	public Long getId() {
@@ -81,7 +92,7 @@ public class UserDTO implements Serializable {
 		this.password = password;
 	}
 
-	//O set será dado por outra classe de adm por segurança
+	// O set será dado por outra classe de adm por segurança
 	public Set<RuleDTO> getRules() {
 		return rules;
 	}

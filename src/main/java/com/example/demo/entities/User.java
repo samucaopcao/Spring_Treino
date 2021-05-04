@@ -30,22 +30,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User implements UserDetails, Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String firstName;
 	private String lastName;
-	
+
 	@Column(unique = true)
 	private String email;
 	private String password;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "tb_user_rule",
-		joinColumns = @JoinColumn(name = "user_id"),
-		inverseJoinColumns = @JoinColumn(name = "rule_id"))
-	private Set<Rule> rules = new HashSet<>(); 
+	@JoinTable(name = "tb_user_rule", joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "rule_id"))
+	private Set<Rule> rules = new HashSet<>();
 
 	public User() {
 		super();
@@ -98,6 +97,14 @@ public class User implements UserDetails, Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set<Rule> getRules() {
+		return rules;
+	}
+
+	public void setRules(Set<Rule> rules) {
+		this.rules = rules;
 	}
 
 	@Override
