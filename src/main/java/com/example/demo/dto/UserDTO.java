@@ -1,6 +1,8 @@
 package com.example.demo.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -24,6 +26,7 @@ public class UserDTO implements Serializable {
 	private String email;
 
 	private String password;
+	Set<RuleDTO> rules = new HashSet<>();
 
 	public UserDTO() {
 		super();
@@ -76,6 +79,11 @@ public class UserDTO implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	//O set será dado por outra classe de adm por segurança
+	public Set<RuleDTO> getRules() {
+		return rules;
 	}
 
 }
