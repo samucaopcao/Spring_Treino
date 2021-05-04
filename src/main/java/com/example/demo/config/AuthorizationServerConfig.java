@@ -22,7 +22,6 @@ import com.example.demo.components.JwtTokenEnhancer;
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-
 	/**
 	 * Classe que habilitará e autorizará o servidor a usar o token para o login
 	 */
@@ -74,4 +73,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore)
 				.accessTokenConverter(accessTokenConverter).tokenEnhancer(chain).userDetailsService(userDetailsService);
 	}
+
 }
