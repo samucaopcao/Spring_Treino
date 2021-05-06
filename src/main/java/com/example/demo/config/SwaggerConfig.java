@@ -21,12 +21,12 @@ public class SwaggerConfig {
 
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select()
+		/*return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class)).paths(PathSelectors.any())
-				.build();
+				.build();*/
 		
-		 // return new Docket(DocumentationType.SWAGGER_2).select()
-		//  .paths(PathSelectors.any()) .build();
+		  return new Docket(DocumentationType.SWAGGER_2).select()
+		  .paths(PathSelectors.any()) .build();
 		 
 	}
 
