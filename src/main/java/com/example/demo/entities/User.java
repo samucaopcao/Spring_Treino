@@ -44,21 +44,22 @@ public class User implements UserDetails, Serializable {
 	private String password;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "tb_user_rule", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "rule_id"))
+	@JoinTable(name = "tb_user_rule", joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "rule_id"))
 	private Set<Rule> rules = new HashSet<>();
 
 	public User() {
 		super();
 	}
 
-	public User(Long id, String firstName, String lastName, String email, String password) {
+	/*public User(Long id, String firstName, String lastName, String email, String password) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-	}
+	}*/
 
 	public Long getId() {
 		return id;
