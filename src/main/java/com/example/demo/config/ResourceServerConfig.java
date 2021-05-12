@@ -36,7 +36,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
 
-	private static final String[] OPERATOR_OR_ADMIN = { "/endpoint1/**", "/endpoint2/**" };
+	private static final String[] OPERATOR_OR_ADMIN = { "/products/**", "/endpoint2/**" };
 
 	private static final String[] ADMIN = { "/users/**" };
 
@@ -52,7 +52,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
 			http.headers().frameOptions().disable();
 		}
-
+		//Ao criar um novo endpoint deve implementar essa lógica da linha 55 ao 58 se eu for inventar uma nova regra colocando o nome igual da linha 39 por exemplo /produtos
 		http.authorizeRequests().antMatchers(PUBLIC).permitAll().antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN)
 				.permitAll().antMatchers(OPERATOR_OR_ADMIN).hasAnyRole("OPERATOR", "ADMIN").antMatchers(ADMIN)
 				.hasRole("ADMIN").anyRequest().authenticated();
