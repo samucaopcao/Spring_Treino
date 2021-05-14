@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tb_product")
+@Table(name = "tb_product")
 public class Product implements Serializable {
 
 	/**
@@ -21,11 +21,10 @@ public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
-	
+
 	private String name;
 	private String description;
-	
-	
+
 	private BigDecimal price;
 
 	public Product() {
@@ -68,9 +67,11 @@ public class Product implements Serializable {
 		return price;
 	}
 
-	public BigDecimal insertPrice(Double price) {
-		BigDecimal pric = new BigDecimal(price);
-		return this.price = pric.add(pric);
+	public BigDecimal insertPrice(BigDecimal price) {
+		//BigDecimal pric = price;
+		// BigDecimal pric = new BigDecimal(price);
+		//return this.price = pric.add(pric);
+		return this.price = price;
 	}
 
 	@Override
